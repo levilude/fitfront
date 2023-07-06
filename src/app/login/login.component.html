@@ -5,19 +5,24 @@
   </div>
   <div class="right-login">
     <div class="card-login">
+      <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
+      <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
+
       <h1>LOGIN</h1>
-      <div class="text-field">
-        <label for="user">User</label>
-        <input type="text" name="user" id="user">
-      </div>
-      <div class="text-field">
-        <label for="pass">Pass</label>
-        <input type="password" name="pass" id="pass" >
-      </div>
-      <div class="forgot-pass">
-        <p>Forgot your password? <strong><a href="/login">Click here!</a></strong></p>
-      </div>
-      <button class="btn-login">Login</button>
+      <form>
+        <div class="text-field">
+          <label for="username">User</label>
+          <input type="text" name="username" id="username" [(ngModel)]="username">
+        </div>
+        <div class="text-field">
+          <label for="password">Pass</label>
+          <input type="password" name="password" id="password" [(ngModel)]="password">
+        </div>
+        <div class="forgot-pass">
+          <p>Forgot your password? <strong><a href="/login">Click here!</a></strong></p>
+        </div>
+        <button class="btn-login" type="submit" (click)="handleLogin()">Login</button>
+      </form>
     </div>
     <p class="sign-up">Don't have a coach account?<strong><a href="/login"> Sign up </a></strong></p>
   </div>
